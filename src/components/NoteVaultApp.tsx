@@ -482,7 +482,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
         className="rounded-3xl shadow-2xl overflow-hidden border-2"
         style={{
           background: lampOn
-            ? 'linear-gradient(135deg,rgba(255,255,255,0.97),rgba(255,251,235,0.92))'
+            ? 'linear-gradient(135deg,rgba(255,255,255,0.98),rgba(255,253,250,0.96))'
             : 'linear-gradient(135deg,rgba(5,5,10,0.97),rgba(40,0,0,0.88))',
           borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)',
         }}
@@ -689,7 +689,7 @@ function ContentModal({ open, onClose, title, icon, children, lampOn }: {
     <ModalShell open={open} onClose={onClose}>
       <div
         className="rounded-3xl shadow-2xl border-2 overflow-hidden flex flex-col max-h-[85vh]"
-        style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.97),rgba(255,251,235,0.92))' : 'linear-gradient(135deg,rgba(5,5,10,0.98),rgba(30,0,0,0.92))', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)' }}
+        style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.98),rgba(255,253,250,0.96))' : 'linear-gradient(135deg,rgba(5,5,10,0.98),rgba(30,0,0,0.92))', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)' }}
       >
         <div className="flex items-center justify-between px-8 py-5 border-b shrink-0" style={{ borderColor: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }}>
           <div className="flex items-center gap-3">
@@ -1942,9 +1942,9 @@ function LoginPage({
           <motion.div className="absolute inset-0 pointer-events-none z-30" animate={{ opacity: darkMode ? 1 : 0 }} transition={{ duration: 0.85 }} style={{ background: 'rgba(0,0,0,0.82)' }} />
           <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="w-full max-w-md relative z-10" style={{ perspective: '1000px' }}>
             <motion.div whileHover={{ rotateY: 1.5, rotateX: 1 }} transition={{ duration: 0.3 }} className="relative" style={{ transformStyle: 'preserve-3d' }}>
-              <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-700" style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.28),rgba(153,0,0,0.18),rgba(255,150,20,0.28))', opacity: darkMode ? (lampOn ? 1 : 0.28) : 0.3 }} />
+              <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-700" style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.28),rgba(153,0,0,0.18),rgba(255,150,20,0.28))', opacity: darkMode ? (lampOn ? 1 : 0.28) : 0.18 }} />
               <div className="relative backdrop-blur-2xl rounded-3xl p-10 shadow-2xl border-2 transition-colors duration-700"
-                style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.96),rgba(255,251,235,0.88))' : 'linear-gradient(135deg,rgba(0,0,0,0.82),rgba(60,0,0,0.3))', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)' }}>
+                style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.98),rgba(255,253,250,0.96))' : 'linear-gradient(135deg,rgba(0,0,0,0.82),rgba(60,0,0,0.3))', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)' }}>
                 <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-yellow-500/30 rounded-tl-3xl" />
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-yellow-500/30 rounded-br-3xl" />
 
