@@ -2161,7 +2161,7 @@ export default function App() {
         {!isLoggedIn ? (
           <motion.div key="login" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.4 }}>
             <LoginPage
-              lampOn={lampOn} setLampOn={(v) => { setLampOn(v); setTransitionKey(k => k + 1); }}
+              lampOn={lampOn} setLampOn={(v) => { setLampOn(v); }}
               language={language} setLanguage={setLanguage}
               onLogin={handleLogin}
               showGoogle={showGoogle} setShowGoogle={setShowGoogle}
