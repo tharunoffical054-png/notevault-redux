@@ -1860,13 +1860,25 @@ function LoginPage({
             </div>
           </motion.div>
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            onClick={() => setLanguage(language === 'EN' ? 'ES' : 'EN')}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl border backdrop-blur-sm transition-all"
-            style={{ background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', borderColor: darkMode ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', color: darkMode ? '#fff' : '#111' }}>
-            <Globe className="w-5 h-5 text-yellow-500" />
-            <span>{language}</span>
-          </motion.button>
+          <div className="flex items-center gap-2 shrink-0">
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}
+              onClick={() => setLampOn(!lampOn)}
+              aria-label={lampOn ? 'Switch to dark mode' : 'Switch to light mode'}
+              className="flex items-center gap-2 h-11 px-3 sm:px-4 rounded-xl border backdrop-blur-sm transition-all"
+              style={{ background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', borderColor: darkMode ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', color: darkMode ? '#fff' : '#111' }}>
+              {lampOn ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-yellow-500" />}
+              <span className="hidden sm:inline text-sm">{lampOn ? 'Light' : 'Dark'}</span>
+            </motion.button>
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              onClick={() => setLanguage(language === 'EN' ? 'ES' : 'EN')}
+              className="flex items-center gap-2 h-11 px-3 sm:px-4 rounded-xl border backdrop-blur-sm transition-all"
+              style={{ background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', borderColor: darkMode ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', color: darkMode ? '#fff' : '#111' }}>
+              <Globe className="w-5 h-5 text-yellow-500" />
+              <span className="text-sm">{language}</span>
+            </motion.button>
+          </div>
         </div>
+
       </motion.header>
 
       {/* MAIN SPLIT */}
