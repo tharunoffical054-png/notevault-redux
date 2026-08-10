@@ -1829,10 +1829,10 @@ function LoginPage({
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute inset-0 transition-opacity duration-700"
           style={{ backgroundImage: 'linear-gradient(rgba(255,215,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,215,0,0.03) 1px,transparent 1px)', backgroundSize: '50px 50px', opacity: darkMode ? 1 : 0.25 }} />
-        <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.45, 0.25] }} transition={{ duration: 8, repeat: Infinity }}
+        <motion.div animate={{ scale: [1, 1.2, 1], opacity: darkMode ? [0.25, 0.45, 0.25] : [0.08, 0.14, 0.08] }} transition={{ duration: 8, repeat: Infinity }}
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle,rgba(202,138,4,0.35),rgba(180,100,0,0.25))' }} />
-        <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.18, 0.32, 0.18] }} transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+        <motion.div animate={{ scale: [1, 1.3, 1], opacity: darkMode ? [0.18, 0.32, 0.18] : [0.05, 0.1, 0.05] }} transition={{ duration: 10, repeat: Infinity, delay: 1 }}
           className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle,rgba(127,0,0,0.35),rgba(100,0,0,0.2))' }} />
         {[...Array(14)].map((_, i) => (
