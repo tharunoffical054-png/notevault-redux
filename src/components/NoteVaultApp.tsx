@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Note {
