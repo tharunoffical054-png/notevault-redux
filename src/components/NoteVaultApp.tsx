@@ -1153,7 +1153,7 @@ function NoteVaultApp({
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0 relative z-10" style={{ paddingRight: '48px' }}>
         {/* TopBar */}
-        <div className="sticky top-0 z-20 backdrop-blur-xl border-b px-6 py-3 flex items-center gap-4" style={{ background: dark ? 'rgba(3,7,18,0.85)' : 'rgba(255,251,235,0.85)', borderColor }}>
+        <div className="sticky top-0 z-20 backdrop-blur-xl border-b px-6 py-3 flex items-center gap-4" style={{ background: dark ? 'rgba(3,7,18,0.85)' : 'rgba(253,248,239,0.9)', borderColor }}>
           <div className="flex-1 relative flex justify-center">
             <div className="relative w-full max-w-lg">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: textSecondary }} />
@@ -1942,7 +1942,7 @@ function LoginPage({
           <motion.div className="absolute inset-0 pointer-events-none z-30" animate={{ opacity: darkMode ? 1 : 0 }} transition={{ duration: 0.85 }} style={{ background: 'rgba(0,0,0,0.82)' }} />
           <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="w-full max-w-md relative z-10" style={{ perspective: '1000px' }}>
             <motion.div whileHover={{ rotateY: 1.5, rotateX: 1 }} transition={{ duration: 0.3 }} className="relative" style={{ transformStyle: 'preserve-3d' }}>
-              <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-700" style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.28),rgba(153,0,0,0.18),rgba(255,150,20,0.28))', opacity: lampOn ? 1 : 0.28 }} />
+              <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-700" style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.28),rgba(153,0,0,0.18),rgba(255,150,20,0.28))', opacity: darkMode ? (lampOn ? 1 : 0.28) : 0.3 }} />
               <div className="relative backdrop-blur-2xl rounded-3xl p-10 shadow-2xl border-2 transition-colors duration-700"
                 style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.96),rgba(255,251,235,0.88))' : 'linear-gradient(135deg,rgba(0,0,0,0.82),rgba(60,0,0,0.3))', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)' }}>
                 <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-yellow-500/30 rounded-tl-3xl" />
