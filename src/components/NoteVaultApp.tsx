@@ -1881,9 +1881,9 @@ function LoginPage({
       </motion.header>
 
       {/* MAIN SPLIT */}
-      <main className="relative z-10 flex-1 flex">
+      <main className="relative z-10 flex-1 flex flex-col lg:flex-row">
         {/* LEFT — Lamp */}
-        <div className="w-1/2 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="hidden lg:flex w-1/2 flex-col items-center justify-center relative overflow-hidden">
           <motion.div className="absolute pointer-events-none"
             style={{ top: '5%', left: '50%', transform: 'translateX(-50%)', width: '420px', height: '72%', clipPath: 'polygon(37% 0%,63% 0%,100% 100%,0% 100%)', background: 'linear-gradient(180deg,rgba(255,230,90,0.6) 0%,rgba(255,200,55,0.22) 55%,transparent 100%)', filter: 'blur(8px)' }}
             animate={{ opacity: lampOn ? 1 : 0 }} transition={{ duration: 0.75 }} />
@@ -1936,7 +1936,7 @@ function LoginPage({
         </div>
 
         {/* RIGHT — Login */}
-        <div className="w-1/2 relative flex items-center justify-center p-8">
+        <div className="w-full lg:w-1/2 relative flex items-center justify-center p-4 sm:p-8">
           <motion.div className="absolute inset-0 pointer-events-none z-30" animate={{ opacity: darkMode ? 1 : 0 }} transition={{ duration: 0.85 }} style={{ background: 'rgba(0,0,0,0.82)' }} />
           <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="w-full max-w-md relative z-10" style={{ perspective: '1000px' }}>
             <motion.div whileHover={{ rotateY: 1.5, rotateX: 1 }} transition={{ duration: 0.3 }} className="relative" style={{ transformStyle: 'preserve-3d' }}>
