@@ -2111,7 +2111,6 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
   const [lampOn, setLampOn] = useState(false);
   const [language, setLanguage] = useState('EN');
-  const [transitionKey, setTransitionKey] = useState(0);
   const [notes, setNotes] = useState<Note[]>([]);
 
   // Modal states
@@ -2144,7 +2143,6 @@ export default function App() {
 
   const handleToggleLamp = useCallback(() => {
     setLampOn(prev => !prev);
-    setTransitionKey(k => k + 1);
   }, []);
 
   return (
@@ -2158,21 +2156,6 @@ export default function App() {
       <SupportModal open={showSupport} onClose={() => setShowSupport(false)} lang={language} lampOn={lampOn} onContact={() => setShowContact(true)} />
       <ContactModal open={showContact} onClose={() => setShowContact(false)} lang={language} lampOn={lampOn} />
 
-      {/* Lamp toggle radial-expand overlay */}
-      <AnimatePresence>
-        {transitionKey > 0 && (
-          <motion.div
-            key={transitionKey}
-            initial={{ clipPath: 'circle(0% at 95% 50%)', opacity: 1 }}
-            animate={{ clipPath: 'circle(150% at 95% 50%)', opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.65, ease: 'easeOut' }}
-            onAnimationComplete={() => setTransitionKey(0)}
-            className="fixed inset-0 pointer-events-none z-[99]"
-            style={{ background: lampOn ? 'rgba(255,235,100,0.35)' : 'rgba(0,0,0,0.5)' }}
-          />
-        )}
-      </AnimatePresence>
 
       <AnimatePresence mode="wait">
         {!isLoggedIn ? (
