@@ -1821,7 +1821,9 @@ function LoginPage({
 
       {/* Global light radiance */}
       <motion.div className="fixed inset-0 pointer-events-none z-[1]" animate={{ opacity: lampOn ? 1 : 0 }} transition={{ duration: 0.9 }}
-        style={{ background: 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,210,70,0.45) 0%, rgba(255,170,30,0.22) 38%, transparent 68%)' }} />
+        style={{ background: darkMode
+          ? 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,210,70,0.45) 0%, rgba(255,170,30,0.22) 38%, transparent 68%)'
+          : 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,214,120,0.16) 0%, rgba(255,190,90,0.07) 38%, transparent 70%)' }} />
 
       {/* Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
