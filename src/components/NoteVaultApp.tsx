@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Note {
@@ -480,7 +482,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
         className="rounded-3xl shadow-2xl overflow-hidden border-2"
         style={{
           background: lampOn
-            ? 'linear-gradient(135deg,rgba(255,255,255,0.97),rgba(255,251,235,0.92))'
+            ? 'linear-gradient(135deg,rgba(255,255,255,0.98),rgba(255,253,250,0.96))'
             : 'linear-gradient(135deg,rgba(5,5,10,0.97),rgba(40,0,0,0.88))',
           borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)',
         }}
@@ -687,7 +689,7 @@ function ContentModal({ open, onClose, title, icon, children, lampOn }: {
     <ModalShell open={open} onClose={onClose}>
       <div
         className="rounded-3xl shadow-2xl border-2 overflow-hidden flex flex-col max-h-[85vh]"
-        style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.97),rgba(255,251,235,0.92))' : 'linear-gradient(135deg,rgba(5,5,10,0.98),rgba(30,0,0,0.92))', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)' }}
+        style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.98),rgba(255,253,250,0.96))' : 'linear-gradient(135deg,rgba(5,5,10,0.98),rgba(30,0,0,0.92))', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)' }}
       >
         <div className="flex items-center justify-between px-8 py-5 border-b shrink-0" style={{ borderColor: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }}>
           <div className="flex items-center gap-3">
@@ -900,11 +902,12 @@ function ContactModal({ open, onClose, lang, lampOn }: { open: boolean; onClose:
 
 // ─── LampCordRight ────────────────────────────────────────────────────────────
 function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => void }) {
+  const isMobile = useIsMobile();
   const [isDragging, setIsDragging] = useState(false);
   const [pullDistance, setPullDistance] = useState(0);
   const dragStartY = useRef(0);
   const MAX_PULL = 130;
-  const TRIGGER_THRESHOLD = 65;
+  const TRIGGER_THRESHOLD = 55;
 
   const onKnobPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     setIsDragging(true);
@@ -918,10 +921,35 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
   };
   const onKnobPointerUp = () => {
     if (!isDragging) return;
-    if (pullDistance >= TRIGGER_THRESHOLD) onToggle();
+    // Tap OR pull both toggle — taps are far easier on a phone
+    if (pullDistance < 8 || pullDistance >= TRIGGER_THRESHOLD) onToggle();
     setPullDistance(0);
     setIsDragging(false);
   };
+
+  // Mobile: a thumb-reachable floating switch instead of a fiddly rope
+  if (isMobile) {
+    return (
+      <motion.button
+        type="button"
+        onClick={onToggle}
+        whileTap={{ scale: 0.92 }}
+        aria-label={lampOn ? 'Switch to dark mode' : 'Switch to light mode'}
+        className="fixed z-50 flex items-center gap-2 rounded-full px-4 h-12 shadow-lg backdrop-blur-md active:opacity-90"
+        style={{
+          right: 'max(16px, env(safe-area-inset-right))',
+          bottom: 'calc(20px + env(safe-area-inset-bottom))',
+          border: `1px solid ${lampOn ? 'rgba(202,138,4,0.35)' : 'rgba(255,255,255,0.14)'}`,
+          background: lampOn ? 'rgba(255,255,255,0.92)' : 'rgba(20,18,14,0.92)',
+          color: lampOn ? '#8a5a00' : '#f5deb3',
+          boxShadow: lampOn ? '0 8px 24px rgba(202,138,4,0.25)' : '0 8px 24px rgba(0,0,0,0.5)',
+        }}
+      >
+        {lampOn ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+        <span className="text-sm font-medium">{lampOn ? 'Light' : 'Dark'}</span>
+      </motion.button>
+    );
+  }
 
   return (
     <div className="fixed right-0 top-0 bottom-0 w-12 flex flex-col items-center justify-start pt-8 z-40" style={{ background: 'transparent' }}>
@@ -931,13 +959,13 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
       </div>
       {/* Hint text rotated */}
       <div style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: '10px', color: lampOn ? '#ca8a04' : '#6b7280', marginBottom: '8px', userSelect: 'none' }}>
-        Pull to toggle
+        Tap or pull to toggle
       </div>
       {/* Fixed cord line */}
       <div style={{ width: '2px', height: '60px', background: lampOn ? '#ca8a04' : '#4b5563', transition: 'background 0.7s' }} />
       {/* Draggable knob */}
       <div
-        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `translateY(${pullDistance}px)`, transition: isDragging ? 'none' : 'transform 0.52s cubic-bezier(0.34,1.56,0.64,1)', cursor: isDragging ? 'grabbing' : 'grab', userSelect: 'none' }}
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `translateY(${pullDistance}px)`, transition: isDragging ? 'none' : 'transform 0.52s cubic-bezier(0.34,1.56,0.64,1)', cursor: isDragging ? 'grabbing' : 'pointer', userSelect: 'none', touchAction: 'none' }}
         onPointerDown={onKnobPointerDown}
         onPointerMove={onKnobPointerMove}
         onPointerUp={onKnobPointerUp}
@@ -946,7 +974,7 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
         <div style={{ width: '2px', height: `${30 + pullDistance * 0.35}px`, background: lampOn ? '#ca8a04' : '#4b5563', transition: isDragging ? 'none' : 'height 0.52s,background 0.7s' }} />
         <motion.div
           whileHover={{ scale: 1.18 }}
-          style={{ width: '30px', height: '30px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: `2px solid ${lampOn ? '#ffd700' : '#4b5563'}`, background: lampOn ? 'radial-gradient(circle at 32% 28%,#fffde0,#ffd700 48%,#b8860b)' : 'radial-gradient(circle at 32% 28%,#888,#444)', boxShadow: lampOn ? '0 0 14px 5px rgba(255,215,0,0.65)' : '0 4px 10px rgba(0,0,0,0.5)', transition: 'background 0.5s,border-color 0.5s,box-shadow 0.5s' }}
+          style={{ width: '34px', height: '34px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: `2px solid ${lampOn ? '#ffd700' : '#4b5563'}`, background: lampOn ? 'radial-gradient(circle at 32% 28%,#fffde0,#ffd700 48%,#b8860b)' : 'radial-gradient(circle at 32% 28%,#888,#444)', boxShadow: lampOn ? '0 0 14px 5px rgba(255,215,0,0.65)' : '0 4px 10px rgba(0,0,0,0.5)', transition: 'background 0.5s,border-color 0.5s,box-shadow 0.5s' }}
         >
           <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: lampOn ? 'rgba(255,255,220,0.92)' : 'rgba(255,255,255,0.18)' }} />
         </motion.div>
@@ -954,6 +982,7 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
     </div>
   );
 }
+
 
 // ─── NoteVaultApp ─────────────────────────────────────────────────────────────
 type AppPage = 'dashboard' | 'new-note' | 'all-files' | 'save' | 'recycle';
@@ -980,7 +1009,7 @@ function NoteVaultApp({
   const photoInputRef = useRef<HTMLInputElement>(null);
 
   const dark = !lampOn;
-  const bg = dark ? '#030712' : '#fffbeb';
+  const bg = dark ? '#030712' : '#fdf8ef';
   const textPrimary = dark ? '#f9fafb' : '#111827';
   const textSecondary = dark ? '#9ca3af' : '#6b7280';
   const borderColor = dark ? 'rgba(120,53,15,0.35)' : 'rgba(251,191,36,0.4)';
@@ -1124,7 +1153,7 @@ function NoteVaultApp({
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0 relative z-10" style={{ paddingRight: '48px' }}>
         {/* TopBar */}
-        <div className="sticky top-0 z-20 backdrop-blur-xl border-b px-6 py-3 flex items-center gap-4" style={{ background: dark ? 'rgba(3,7,18,0.85)' : 'rgba(255,251,235,0.85)', borderColor }}>
+        <div className="sticky top-0 z-20 backdrop-blur-xl border-b px-6 py-3 flex items-center gap-4" style={{ background: dark ? 'rgba(3,7,18,0.85)' : 'rgba(253,248,239,0.9)', borderColor }}>
           <div className="flex-1 relative flex justify-center">
             <div className="relative w-full max-w-lg">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: textSecondary }} />
@@ -1781,25 +1810,29 @@ function LoginPage({
   };
   const onKnobPointerUp = () => {
     if (!isDragging) return;
-    if (pullDistance >= TRIGGER_THRESHOLD) setLampOn(!lampOn);
+    // Tap OR pull both toggle the lamp
+    if (pullDistance < 8 || pullDistance >= TRIGGER_THRESHOLD) setLampOn(!lampOn);
     setPullDistance(0);
     setIsDragging(false);
   };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden transition-colors duration-700" style={{ background: darkMode ? '#030712' : '#fffbeb' }}>
+    <div className="min-h-screen flex flex-col overflow-hidden transition-colors duration-700" style={{ background: darkMode ? '#030712' : '#fdf8ef' }}>
+
       {/* Global light radiance */}
       <motion.div className="fixed inset-0 pointer-events-none z-[1]" animate={{ opacity: lampOn ? 1 : 0 }} transition={{ duration: 0.9 }}
-        style={{ background: 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,210,70,0.45) 0%, rgba(255,170,30,0.22) 38%, transparent 68%)' }} />
+        style={{ background: darkMode
+          ? 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,210,70,0.45) 0%, rgba(255,170,30,0.22) 38%, transparent 68%)'
+          : 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,214,120,0.16) 0%, rgba(255,190,90,0.07) 38%, transparent 70%)' }} />
 
       {/* Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute inset-0 transition-opacity duration-700"
           style={{ backgroundImage: 'linear-gradient(rgba(255,215,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,215,0,0.03) 1px,transparent 1px)', backgroundSize: '50px 50px', opacity: darkMode ? 1 : 0.25 }} />
-        <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.45, 0.25] }} transition={{ duration: 8, repeat: Infinity }}
+        <motion.div animate={{ scale: [1, 1.2, 1], opacity: darkMode ? [0.25, 0.45, 0.25] : [0.08, 0.14, 0.08] }} transition={{ duration: 8, repeat: Infinity }}
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle,rgba(202,138,4,0.35),rgba(180,100,0,0.25))' }} />
-        <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.18, 0.32, 0.18] }} transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+        <motion.div animate={{ scale: [1, 1.3, 1], opacity: darkMode ? [0.18, 0.32, 0.18] : [0.05, 0.1, 0.05] }} transition={{ duration: 10, repeat: Infinity, delay: 1 }}
           className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle,rgba(127,0,0,0.35),rgba(100,0,0,0.2))' }} />
         {[...Array(14)].map((_, i) => (
@@ -1814,7 +1847,7 @@ function LoginPage({
       <motion.header initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
         className="relative z-20 backdrop-blur-xl border-b transition-colors duration-700"
         style={{ background: darkMode ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.7)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(251,191,36,0.35)' }}>
-        <div className="container mx-auto px-8 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3">
             <div className="relative">
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
@@ -1828,20 +1861,31 @@ function LoginPage({
               <p className="text-xs text-yellow-600">Premium Access</p>
             </div>
           </motion.div>
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            onClick={() => setLanguage(language === 'EN' ? 'ES' : 'EN')}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl border backdrop-blur-sm transition-all"
-            style={{ background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', borderColor: darkMode ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', color: darkMode ? '#fff' : '#111' }}>
-            <Globe className="w-5 h-5 text-yellow-500" />
-            <span>{language}</span>
-          </motion.button>
+          <div className="flex items-center gap-2 shrink-0">
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}
+              onClick={() => setLampOn(!lampOn)}
+              aria-label={lampOn ? 'Switch to dark mode' : 'Switch to light mode'}
+              className="flex items-center gap-2 h-11 px-3 sm:px-4 rounded-xl border backdrop-blur-sm transition-all"
+              style={{ background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', borderColor: darkMode ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', color: darkMode ? '#fff' : '#111' }}>
+              {lampOn ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-yellow-500" />}
+              <span className="hidden sm:inline text-sm">{lampOn ? 'Light' : 'Dark'}</span>
+            </motion.button>
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+              onClick={() => setLanguage(language === 'EN' ? 'ES' : 'EN')}
+              className="flex items-center gap-2 h-11 px-3 sm:px-4 rounded-xl border backdrop-blur-sm transition-all"
+              style={{ background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', borderColor: darkMode ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', color: darkMode ? '#fff' : '#111' }}>
+              <Globe className="w-5 h-5 text-yellow-500" />
+              <span className="text-sm">{language}</span>
+            </motion.button>
+          </div>
         </div>
+
       </motion.header>
 
       {/* MAIN SPLIT */}
-      <main className="relative z-10 flex-1 flex">
+      <main className="relative z-10 flex-1 flex flex-col lg:flex-row">
         {/* LEFT — Lamp */}
-        <div className="w-1/2 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="hidden lg:flex w-1/2 flex-col items-center justify-center relative overflow-hidden">
           <motion.div className="absolute pointer-events-none"
             style={{ top: '5%', left: '50%', transform: 'translateX(-50%)', width: '420px', height: '72%', clipPath: 'polygon(37% 0%,63% 0%,100% 100%,0% 100%)', background: 'linear-gradient(180deg,rgba(255,230,90,0.6) 0%,rgba(255,200,55,0.22) 55%,transparent 100%)', filter: 'blur(8px)' }}
             animate={{ opacity: lampOn ? 1 : 0 }} transition={{ duration: 0.75 }} />
@@ -1894,13 +1938,13 @@ function LoginPage({
         </div>
 
         {/* RIGHT — Login */}
-        <div className="w-1/2 relative flex items-center justify-center p-8">
+        <div className="w-full lg:w-1/2 relative flex items-center justify-center p-4 sm:p-8">
           <motion.div className="absolute inset-0 pointer-events-none z-30" animate={{ opacity: darkMode ? 1 : 0 }} transition={{ duration: 0.85 }} style={{ background: 'rgba(0,0,0,0.82)' }} />
           <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="w-full max-w-md relative z-10" style={{ perspective: '1000px' }}>
             <motion.div whileHover={{ rotateY: 1.5, rotateX: 1 }} transition={{ duration: 0.3 }} className="relative" style={{ transformStyle: 'preserve-3d' }}>
-              <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-700" style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.28),rgba(153,0,0,0.18),rgba(255,150,20,0.28))', opacity: lampOn ? 1 : 0.28 }} />
+              <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-700" style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.28),rgba(153,0,0,0.18),rgba(255,150,20,0.28))', opacity: darkMode ? (lampOn ? 1 : 0.28) : 0.18 }} />
               <div className="relative backdrop-blur-2xl rounded-3xl p-10 shadow-2xl border-2 transition-colors duration-700"
-                style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.96),rgba(255,251,235,0.88))' : 'linear-gradient(135deg,rgba(0,0,0,0.82),rgba(60,0,0,0.3))', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)' }}>
+                style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.98),rgba(255,253,250,0.96))' : 'linear-gradient(135deg,rgba(0,0,0,0.82),rgba(60,0,0,0.3))', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)' }}>
                 <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-yellow-500/30 rounded-tl-3xl" />
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-yellow-500/30 rounded-br-3xl" />
 
@@ -2035,7 +2079,7 @@ function LoginPage({
       <motion.footer initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}
         className="relative z-20 backdrop-blur-xl border-t transition-colors duration-700"
         style={{ background: darkMode ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.65)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(251,191,36,0.35)' }}>
-        <div className="container mx-auto px-8 py-6">
+        <div className="container mx-auto px-4 sm:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="transition-colors duration-700" style={{ color: darkMode ? '#6b7280' : '#9ca3af' }}>
               © 2026 NoteVault. {language === 'EN' ? 'All rights reserved.' : 'Todos los derechos reservados.'}
@@ -2067,7 +2111,6 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
   const [lampOn, setLampOn] = useState(false);
   const [language, setLanguage] = useState('EN');
-  const [transitionKey, setTransitionKey] = useState(0);
   const [notes, setNotes] = useState<Note[]>([]);
 
   // Modal states
@@ -2100,7 +2143,6 @@ export default function App() {
 
   const handleToggleLamp = useCallback(() => {
     setLampOn(prev => !prev);
-    setTransitionKey(k => k + 1);
   }, []);
 
   return (
@@ -2114,26 +2156,12 @@ export default function App() {
       <SupportModal open={showSupport} onClose={() => setShowSupport(false)} lang={language} lampOn={lampOn} onContact={() => setShowContact(true)} />
       <ContactModal open={showContact} onClose={() => setShowContact(false)} lang={language} lampOn={lampOn} />
 
-      {/* Lamp toggle radial-expand overlay */}
-      <AnimatePresence>
-        {transitionKey > 0 && (
-          <motion.div
-            key={transitionKey}
-            initial={{ clipPath: 'circle(0% at 95% 50%)' }}
-            animate={{ clipPath: 'circle(150% at 95% 50%)' }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.65, ease: 'easeOut' }}
-            className="fixed inset-0 pointer-events-none z-[99]"
-            style={{ background: lampOn ? 'rgba(255,235,100,0.35)' : 'rgba(0,0,0,0.5)' }}
-          />
-        )}
-      </AnimatePresence>
 
       <AnimatePresence mode="wait">
         {!isLoggedIn ? (
           <motion.div key="login" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.4 }}>
             <LoginPage
-              lampOn={lampOn} setLampOn={(v) => { setLampOn(v); setTransitionKey(k => k + 1); }}
+              lampOn={lampOn} setLampOn={(v) => { setLampOn(v); }}
               language={language} setLanguage={setLanguage}
               onLogin={handleLogin}
               showGoogle={showGoogle} setShowGoogle={setShowGoogle}
