@@ -2163,10 +2163,11 @@ export default function App() {
         {transitionKey > 0 && (
           <motion.div
             key={transitionKey}
-            initial={{ clipPath: 'circle(0% at 95% 50%)' }}
-            animate={{ clipPath: 'circle(150% at 95% 50%)' }}
+            initial={{ clipPath: 'circle(0% at 95% 50%)', opacity: 1 }}
+            animate={{ clipPath: 'circle(150% at 95% 50%)', opacity: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.65, ease: 'easeOut' }}
+            onAnimationComplete={() => setTransitionKey(0)}
             className="fixed inset-0 pointer-events-none z-[99]"
             style={{ background: lampOn ? 'rgba(255,235,100,0.35)' : 'rgba(0,0,0,0.5)' }}
           />
