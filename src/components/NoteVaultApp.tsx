@@ -1009,7 +1009,7 @@ function NoteVaultApp({
   const photoInputRef = useRef<HTMLInputElement>(null);
 
   const dark = !lampOn;
-  const bg = dark ? '#030712' : '#fffbeb';
+  const bg = dark ? '#030712' : '#fdf8ef';
   const textPrimary = dark ? '#f9fafb' : '#111827';
   const textSecondary = dark ? '#9ca3af' : '#6b7280';
   const borderColor = dark ? 'rgba(120,53,15,0.35)' : 'rgba(251,191,36,0.4)';
@@ -1845,7 +1845,7 @@ function LoginPage({
       <motion.header initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
         className="relative z-20 backdrop-blur-xl border-b transition-colors duration-700"
         style={{ background: darkMode ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.7)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(251,191,36,0.35)' }}>
-        <div className="container mx-auto px-8 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3">
             <div className="relative">
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
@@ -2077,7 +2077,7 @@ function LoginPage({
       <motion.footer initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}
         className="relative z-20 backdrop-blur-xl border-t transition-colors duration-700"
         style={{ background: darkMode ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.65)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(251,191,36,0.35)' }}>
-        <div className="container mx-auto px-8 py-6">
+        <div className="container mx-auto px-4 sm:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="transition-colors duration-700" style={{ color: darkMode ? '#6b7280' : '#9ca3af' }}>
               © 2026 NoteVault. {language === 'EN' ? 'All rights reserved.' : 'Todos los derechos reservados.'}
