@@ -1859,7 +1859,6 @@ function LoginPage({
               <p className="text-xs text-yellow-600">Premium Access</p>
             </div>
           </motion.div>
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
           <div className="flex items-center gap-2 shrink-0">
             <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}
               onClick={() => setLampOn(!lampOn)}
