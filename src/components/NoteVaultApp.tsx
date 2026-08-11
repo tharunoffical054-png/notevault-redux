@@ -1025,6 +1025,13 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
   );
 }
 
+function MobileOnlyRope({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => void }) {
+  const isMobile = useIsMobile();
+  if (!isMobile) return null;
+  return <LampCordRight lampOn={lampOn} onToggle={onToggle} />;
+}
+
+
 
 // ─── NoteVaultApp ─────────────────────────────────────────────────────────────
 type AppPage = 'dashboard' | 'new-note' | 'all-files' | 'save' | 'recycle';
