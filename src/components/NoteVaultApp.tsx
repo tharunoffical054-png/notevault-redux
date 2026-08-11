@@ -933,7 +933,7 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
     return (
       <div
         className="fixed z-50 flex flex-col items-center"
-        style={{ right: 'max(6px, env(safe-area-inset-right))', top: 0, width: '48px', pointerEvents: 'none' }}
+        style={{ right: 'max(10px, env(safe-area-inset-right))', top: 0, width: '52px', pointerEvents: 'none' }}
       >
         {/* anchor cap */}
         <div
@@ -948,7 +948,7 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
         <div
           style={{
             width: '4px',
-            height: `${64 + pull}px`,
+            height: `${86 + pull}px`,
             borderRadius: '2px',
             background: lampOn
               ? 'repeating-linear-gradient(180deg,#e0b544 0px,#c9992f 4px,#a97d22 8px)'
