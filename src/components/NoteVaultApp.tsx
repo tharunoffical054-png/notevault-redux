@@ -933,7 +933,7 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
     return (
       <div
         className="fixed z-50 flex flex-col items-center"
-        style={{ right: 'max(14px, env(safe-area-inset-right))', top: 0, width: '56px', pointerEvents: 'none' }}
+        style={{ right: 'max(6px, env(safe-area-inset-right))', top: 0, width: '48px', pointerEvents: 'none' }}
       >
         {/* anchor cap */}
         <div
