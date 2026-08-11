@@ -927,29 +927,71 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
     setIsDragging(false);
   };
 
-  // Mobile: a thumb-reachable floating switch instead of a fiddly rope
+  // Mobile: a real hanging rope — pull it down or tap the knob to toggle
   if (isMobile) {
+    const pull = pullDistance;
     return (
-      <motion.button
-        type="button"
-        onClick={onToggle}
-        whileTap={{ scale: 0.92 }}
-        aria-label={lampOn ? 'Switch to dark mode' : 'Switch to light mode'}
-        className="fixed z-50 flex items-center gap-2 rounded-full px-4 h-12 shadow-lg backdrop-blur-md active:opacity-90"
-        style={{
-          right: 'max(16px, env(safe-area-inset-right))',
-          bottom: 'calc(20px + env(safe-area-inset-bottom))',
-          border: `1px solid ${lampOn ? 'rgba(202,138,4,0.35)' : 'rgba(255,255,255,0.14)'}`,
-          background: lampOn ? 'rgba(255,255,255,0.92)' : 'rgba(20,18,14,0.92)',
-          color: lampOn ? '#8a5a00' : '#f5deb3',
-          boxShadow: lampOn ? '0 8px 24px rgba(202,138,4,0.25)' : '0 8px 24px rgba(0,0,0,0.5)',
-        }}
+      <div
+        className="fixed z-50 flex flex-col items-center"
+        style={{ right: 'max(10px, env(safe-area-inset-right))', top: 0, width: '52px', pointerEvents: 'none' }}
       >
-        {lampOn ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-        <span className="text-sm font-medium">{lampOn ? 'Light' : 'Dark'}</span>
-      </motion.button>
+        {/* anchor cap */}
+        <div
+          style={{
+            width: '16px', height: '8px', borderRadius: '0 0 8px 8px',
+            background: lampOn ? 'linear-gradient(180deg,#f5c542,#b8860b)' : 'linear-gradient(180deg,#4b5563,#1f2937)',
+            boxShadow: lampOn ? '0 2px 8px rgba(255,215,0,0.45)' : '0 2px 6px rgba(0,0,0,0.5)',
+            transition: 'background 0.6s, box-shadow 0.6s',
+          }}
+        />
+        {/* rope */}
+        <div
+          style={{
+            width: '4px',
+            height: `${86 + pull}px`,
+            borderRadius: '2px',
+            background: lampOn
+              ? 'repeating-linear-gradient(180deg,#e0b544 0px,#c9992f 4px,#a97d22 8px)'
+              : 'repeating-linear-gradient(180deg,#5b6472 0px,#434b57 4px,#333941 8px)',
+            transition: isDragging ? 'none' : 'height 0.5s cubic-bezier(0.34,1.56,0.64,1), background 0.6s',
+          }}
+        />
+        {/* knob — big touch target */}
+        <motion.div
+          animate={isDragging ? {} : { rotate: [0, 2.5, -2.5, 0] }}
+          transition={isDragging ? {} : { duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          onPointerDown={onKnobPointerDown}
+          onPointerMove={onKnobPointerMove}
+          onPointerUp={onKnobPointerUp}
+          onPointerCancel={onKnobPointerUp}
+          role="button"
+          aria-label={lampOn ? 'Pull to switch to dark mode' : 'Pull to switch to light mode'}
+          style={{
+            pointerEvents: 'auto', touchAction: 'none', userSelect: 'none', cursor: 'grab',
+            marginTop: '-2px', padding: '10px',
+          }}
+        >
+          <div
+            style={{
+              width: '38px', height: '38px', borderRadius: '50%',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              border: `2px solid ${lampOn ? '#ffd700' : '#4b5563'}`,
+              background: lampOn
+                ? 'radial-gradient(circle at 32% 28%,#fffde0,#ffd700 48%,#b8860b)'
+                : 'radial-gradient(circle at 32% 28%,#8b8b8b,#3a3a3a)',
+              boxShadow: lampOn ? '0 0 16px 6px rgba(255,215,0,0.55)' : '0 4px 12px rgba(0,0,0,0.55)',
+              transition: 'background 0.5s, border-color 0.5s, box-shadow 0.5s',
+            }}
+          >
+            {lampOn
+              ? <Sun className="w-4 h-4" style={{ color: '#7a4b00' }} />
+              : <Moon className="w-4 h-4" style={{ color: '#e5e7eb' }} />}
+          </div>
+        </motion.div>
+      </div>
     );
   }
+
 
   return (
     <div className="fixed right-0 top-0 bottom-0 w-12 flex flex-col items-center justify-start pt-8 z-40" style={{ background: 'transparent' }}>
@@ -982,6 +1024,13 @@ function LampCordRight({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => 
     </div>
   );
 }
+
+function MobileOnlyRope({ lampOn, onToggle }: { lampOn: boolean; onToggle: () => void }) {
+  const isMobile = useIsMobile();
+  if (!isMobile) return null;
+  return <LampCordRight lampOn={lampOn} onToggle={onToggle} />;
+}
+
 
 
 // ─── NoteVaultApp ─────────────────────────────────────────────────────────────
@@ -1862,14 +1911,6 @@ function LoginPage({
             </div>
           </motion.div>
           <div className="flex items-center gap-2 shrink-0">
-            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}
-              onClick={() => setLampOn(!lampOn)}
-              aria-label={lampOn ? 'Switch to dark mode' : 'Switch to light mode'}
-              className="flex items-center gap-2 h-11 px-3 sm:px-4 rounded-xl border backdrop-blur-sm transition-all"
-              style={{ background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', borderColor: darkMode ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)', color: darkMode ? '#fff' : '#111' }}>
-              {lampOn ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-yellow-500" />}
-              <span className="hidden sm:inline text-sm">{lampOn ? 'Light' : 'Dark'}</span>
-            </motion.button>
             <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
               onClick={() => setLanguage(language === 'EN' ? 'ES' : 'EN')}
               className="flex items-center gap-2 h-11 px-3 sm:px-4 rounded-xl border backdrop-blur-sm transition-all"
@@ -1879,8 +1920,9 @@ function LoginPage({
             </motion.button>
           </div>
         </div>
-
       </motion.header>
+      <MobileOnlyRope lampOn={lampOn} onToggle={() => setLampOn(!lampOn)} />
+
 
       {/* MAIN SPLIT */}
       <main className="relative z-10 flex-1 flex flex-col lg:flex-row">
