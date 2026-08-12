@@ -133,8 +133,16 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    letter-spacing: -0.005em;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
 }
+
 
 /**
  * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
