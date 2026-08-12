@@ -482,7 +482,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
           background: lampOn
             ? 'linear-gradient(135deg,rgba(255,255,255,0.97),rgba(255,251,235,0.92))'
             : 'linear-gradient(135deg,rgba(5,5,10,0.97),rgba(40,0,0,0.88))',
-          borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)',
+          borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.35)',
         }}
       >
         <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-yellow-500/30 rounded-tl-3xl" />
@@ -491,7 +491,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
         <div className="relative px-8 py-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 via-amber-600 to-red-900 rounded-xl flex items-center justify-center shadow-lg shadow-yellow-500/30">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] rounded-xl flex items-center justify-center shadow-lg shadow-[#c9a84c]/30">
                 <BookOpen className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -512,7 +512,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
               type="button"
               onClick={() => photoInputRef.current?.click()}
               className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-yellow-500/50 hover:border-yellow-500 transition-all group"
-              style={{ background: lampOn ? 'rgba(251,191,36,0.1)' : 'rgba(251,191,36,0.08)' }}
+              style={{ background: lampOn ? 'rgba(201,168,76,0.1)' : 'rgba(201,168,76,0.08)' }}
             >
               {photoDataUrl ? (
                 <img src={photoDataUrl} alt="profile" className="w-full h-full object-cover" />
@@ -535,7 +535,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
               animate={{ opacity: 1, scale: 1 }}
               className="flex flex-col items-center py-8 text-center gap-4"
             >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-xl shadow-yellow-500/40">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a84c] to-[#f0d78c] flex items-center justify-center shadow-xl shadow-[#c9a84c]/40">
                 <CheckCircle className="w-9 h-9 text-white" />
               </div>
               <h3 className="text-xl font-semibold" style={{ color: lampOn ? '#111' : '#fff' }}>
@@ -560,7 +560,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
                     value={name}
                     onChange={e => setName(e.target.value)}
                     className="w-full border-2 rounded-xl px-12 py-3.5 placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-all"
-                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
+                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
                     placeholder={lang === 'EN' ? 'Your full name' : 'Tu nombre completo'}
                     required
                     autoFocus
@@ -579,7 +579,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
                     value={suEmail}
                     onChange={e => setSuEmail(e.target.value)}
                     className="w-full border-2 rounded-xl px-12 py-3.5 placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-all"
-                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
+                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
                     placeholder={lang === 'EN' ? 'your@email.com' : 'tu@email.com'}
                     required
                   />
@@ -608,7 +608,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
                     value={suPass}
                     onChange={e => setSuPass(e.target.value)}
                     className="w-full border-2 rounded-xl px-12 py-3.5 placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-all"
-                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
+                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
                     placeholder="••••••••"
                     required
                   />
@@ -640,7 +640,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
                     value={suConfirm}
                     onChange={e => setSuConfirm(e.target.value)}
                     className="w-full border-2 rounded-xl px-12 py-3.5 placeholder-gray-400 focus:outline-none transition-all"
-                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: suConfirm.length > 0 ? passwordsMatch ? '#22c55e' : '#ef4444' : lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
+                    style={{ background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: suConfirm.length > 0 ? passwordsMatch ? '#22c55e' : '#ef4444' : lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
                     placeholder="••••••••"
                     required
                   />
@@ -662,7 +662,7 @@ function SignUpModal({ open, onClose, lang, lampOn, onLogin }: {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={loading || !passwordsMatch || !passwordStrong}
-                className="relative w-full overflow-hidden rounded-xl py-4 bg-gradient-to-r from-yellow-500 via-amber-600 to-red-900 text-white font-medium disabled:opacity-50 shadow-lg shadow-yellow-500/30 flex items-center justify-center gap-2 mt-2"
+                className="relative w-full overflow-hidden rounded-xl py-4 bg-gradient-to-r from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] text-white font-medium disabled:opacity-50 shadow-lg shadow-[#c9a84c]/30 flex items-center justify-center gap-2 mt-2"
               >
                 <motion.div animate={{ x: ['-100%', '100%'] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 <span className="relative z-10 flex items-center gap-2">
@@ -687,11 +687,11 @@ function ContentModal({ open, onClose, title, icon, children, lampOn }: {
     <ModalShell open={open} onClose={onClose}>
       <div
         className="rounded-3xl shadow-2xl border-2 overflow-hidden flex flex-col max-h-[85vh]"
-        style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.97),rgba(255,251,235,0.92))' : 'linear-gradient(135deg,rgba(5,5,10,0.98),rgba(30,0,0,0.92))', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.35)' }}
+        style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.97),rgba(255,251,235,0.92))' : 'linear-gradient(135deg,rgba(5,5,10,0.98),rgba(30,0,0,0.92))', borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.35)' }}
       >
-        <div className="flex items-center justify-between px-8 py-5 border-b shrink-0" style={{ borderColor: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }}>
+        <div className="flex items-center justify-between px-8 py-5 border-b shrink-0" style={{ borderColor: lampOn ? 'rgba(201,168,76,0.2)' : 'rgba(120,53,15,0.25)' }}>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-gradient-to-br from-yellow-500 via-amber-600 to-red-900 rounded-xl flex items-center justify-center shadow-md shadow-yellow-500/30">
+            <div className="w-9 h-9 bg-gradient-to-br from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] rounded-xl flex items-center justify-center shadow-md shadow-[#c9a84c]/30">
               {icon}
             </div>
             <h2 className="text-lg font-semibold" style={{ color: lampOn ? '#111' : '#f9fafb' }}>{title}</h2>
@@ -734,16 +734,16 @@ function PrivacyModal({ open, onClose, lang, lampOn }: { open: boolean; onClose:
           <li>{t ? 'IP address and approximate location' : 'Dirección IP y ubicación aproximada'}</li>
         </ul>
       </Section>
-      <div className="h-px" style={{ background: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }} />
+      <div className="h-px" style={{ background: lampOn ? 'rgba(201,168,76,0.2)' : 'rgba(120,53,15,0.25)' }} />
       <Section title={t ? '2. How We Use Your Information' : '2. Cómo usamos tu información'} lampOn={lampOn}>
         <p>{t ? 'We use the information we collect to provide, maintain, and improve NoteVault, authenticate your identity, send transactional emails, and protect against fraud.' : 'Usamos la información para brindar, mantener y mejorar NoteVault, autenticar tu identidad y proteger contra fraudes.'}</p>
         <p>{t ? 'We do not sell, rent, or trade your personal information to third parties.' : 'No vendemos ni intercambiamos tu información personal a terceros.'}</p>
       </Section>
-      <div className="h-px" style={{ background: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }} />
+      <div className="h-px" style={{ background: lampOn ? 'rgba(201,168,76,0.2)' : 'rgba(120,53,15,0.25)' }} />
       <Section title={t ? '3. Data Security' : '3. Seguridad de datos'} lampOn={lampOn}>
         <p>{t ? 'We implement AES-256 encryption at rest, TLS 1.3 in transit, bcrypt password hashing, and regular security audits.' : 'Implementamos cifrado AES-256, TLS 1.3, hashing bcrypt y auditorías periódicas.'}</p>
       </Section>
-      <div className="rounded-xl px-4 py-3 text-xs" style={{ background: lampOn ? 'rgba(251,191,36,0.08)' : 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.2)', color: lampOn ? '#92400e' : '#fbbf24' }}>
+      <div className="rounded-xl px-4 py-3 text-xs" style={{ background: lampOn ? 'rgba(201,168,76,0.08)' : 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', color: lampOn ? '#92400e' : '#c9a84c' }}>
         {t ? 'Questions? Contact privacy@notevault.io' : '¿Preguntas? Contáctanos en privacy@notevault.io'}
       </div>
     </ContentModal>
@@ -761,7 +761,7 @@ function TermsModal({ open, onClose, lang, lampOn }: { open: boolean; onClose: (
       <Section title={t ? '1. Acceptance of Terms' : '1. Aceptación de términos'} lampOn={lampOn}>
         <p>{t ? 'By accessing or using NoteVault, you agree to be bound by these Terms of Service. If you disagree, you may not access the Service.' : 'Al acceder o usar NoteVault, aceptas estos Términos. Si no estás de acuerdo, no puedes acceder al Servicio.'}</p>
       </Section>
-      <div className="h-px" style={{ background: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }} />
+      <div className="h-px" style={{ background: lampOn ? 'rgba(201,168,76,0.2)' : 'rgba(120,53,15,0.25)' }} />
       <Section title={t ? '2. Account Responsibilities' : '2. Responsabilidades de cuenta'} lampOn={lampOn}>
         <ul className="list-disc list-inside space-y-1">
           <li>{t ? 'You must be at least 13 years old to use NoteVault' : 'Debes tener al menos 13 años para usar NoteVault'}</li>
@@ -769,11 +769,11 @@ function TermsModal({ open, onClose, lang, lampOn }: { open: boolean; onClose: (
           <li>{t ? 'You must notify us immediately of any unauthorized account access' : 'Debes notificarnos inmediatamente cualquier acceso no autorizado'}</li>
         </ul>
       </Section>
-      <div className="h-px" style={{ background: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }} />
+      <div className="h-px" style={{ background: lampOn ? 'rgba(201,168,76,0.2)' : 'rgba(120,53,15,0.25)' }} />
       <Section title={t ? '3. Limitation of Liability' : '3. Limitación de responsabilidad'} lampOn={lampOn}>
         <p>{t ? 'To the maximum extent permitted by law, NoteVault shall not be liable for any indirect, incidental, or consequential damages.' : 'En la máxima medida permitida, NoteVault no será responsable de daños indirectos o consecuentes.'}</p>
       </Section>
-      <div className="rounded-xl px-4 py-3 text-xs" style={{ background: lampOn ? 'rgba(251,191,36,0.08)' : 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.2)', color: lampOn ? '#92400e' : '#fbbf24' }}>
+      <div className="rounded-xl px-4 py-3 text-xs" style={{ background: lampOn ? 'rgba(201,168,76,0.08)' : 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', color: lampOn ? '#92400e' : '#c9a84c' }}>
         {t ? 'Questions? Contact legal@notevault.io' : '¿Preguntas? Contáctanos en legal@notevault.io'}
       </div>
     </ContentModal>
@@ -800,16 +800,16 @@ function SupportModal({ open, onClose, lang, lampOn, onContact }: { open: boolea
     <ContentModal open={open} onClose={onClose} title={t ? 'Help & Support' : 'Ayuda y Soporte'} icon={<User className="w-4 h-4 text-white" />} lampOn={lampOn}>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
-          <div key={i} className="rounded-xl overflow-hidden border transition-all" style={{ borderColor: lampOn ? 'rgba(251,191,36,0.2)' : 'rgba(120,53,15,0.25)' }}>
+          <div key={i} className="rounded-xl overflow-hidden border transition-all" style={{ borderColor: lampOn ? 'rgba(201,168,76,0.2)' : 'rgba(120,53,15,0.25)' }}>
             <button className="w-full flex items-center justify-between px-4 py-3 text-left transition-colors"
-              style={{ background: lampOn ? (openFaq === i ? 'rgba(251,191,36,0.1)' : 'rgba(255,255,255,0.5)') : (openFaq === i ? 'rgba(251,191,36,0.08)' : 'rgba(255,255,255,0.03)') }}
+              style={{ background: lampOn ? (openFaq === i ? 'rgba(201,168,76,0.1)' : 'rgba(255,255,255,0.5)') : (openFaq === i ? 'rgba(201,168,76,0.08)' : 'rgba(255,255,255,0.03)') }}
               onClick={() => setOpenFaq(openFaq === i ? null : i)}>
               <span className="font-medium text-sm" style={{ color: lampOn ? '#111' : '#f9fafb' }}>{faq.q}</span>
               <span className="text-yellow-500 ml-2 text-lg leading-none">{openFaq === i ? '−' : '+'}</span>
             </button>
             {openFaq === i && (
               <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="px-4 pb-3 text-sm"
-                style={{ color: lampOn ? '#6b7280' : '#9ca3af', background: lampOn ? 'rgba(251,191,36,0.04)' : 'rgba(255,255,255,0.02)' }}>
+                style={{ color: lampOn ? '#6b7280' : '#9ca3af', background: lampOn ? 'rgba(201,168,76,0.04)' : 'rgba(255,255,255,0.02)' }}>
                 {faq.a}
               </motion.div>
             )}
@@ -817,7 +817,7 @@ function SupportModal({ open, onClose, lang, lampOn, onContact }: { open: boolea
         ))}
       </div>
       <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={() => { onClose(); onContact(); }}
-        className="w-full py-3.5 rounded-xl text-white font-medium bg-gradient-to-r from-yellow-500 via-amber-600 to-red-900 shadow-lg shadow-yellow-500/25 flex items-center justify-center gap-2">
+        className="w-full py-3.5 rounded-xl text-white font-medium bg-gradient-to-r from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] shadow-lg shadow-[#c9a84c]/25 flex items-center justify-center gap-2">
         <Mail className="w-4 h-4" />
         {t ? 'Send Us a Message' : 'Envíanos un Mensaje'}
       </motion.button>
@@ -838,18 +838,18 @@ function ContactModal({ open, onClose, lang, lampOn }: { open: boolean; onClose:
   const handleClose = () => { setName(''); setCEmail(''); setSubject(''); setMessage(''); setSent(false); onClose(); };
   const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setLoading(true); setTimeout(() => { setLoading(false); setSent(true); }, 1800); };
 
-  const inputStyle = { background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' };
+  const inputStyle = { background: lampOn ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' };
   const labelColor = lampOn ? '#374151' : '#d1d5db';
 
   return (
     <ContentModal open={open} onClose={handleClose} title={t ? 'Contact Us' : 'Contáctanos'} icon={<Mail className="w-4 h-4 text-white" />} lampOn={lampOn}>
       {sent ? (
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center py-10 text-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-xl shadow-yellow-500/40">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a84c] to-[#f0d78c] flex items-center justify-center shadow-xl shadow-[#c9a84c]/40">
             <CheckCircle className="w-9 h-9 text-white" />
           </div>
           <h3 className="text-xl font-semibold" style={{ color: lampOn ? '#111' : '#fff' }}>{t ? 'Message sent!' : '¡Mensaje enviado!'}</h3>
-          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={handleClose} className="mt-2 px-8 py-3 rounded-xl text-white font-medium bg-gradient-to-r from-yellow-500 via-amber-600 to-red-900">
+          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={handleClose} className="mt-2 px-8 py-3 rounded-xl text-white font-medium bg-gradient-to-r from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f]">
             {t ? 'Done' : 'Cerrar'}
           </motion.button>
         </motion.div>
@@ -885,7 +885,7 @@ function ContactModal({ open, onClose, lang, lampOn }: { open: boolean; onClose:
             <label className="block text-xs font-medium mb-1.5" style={{ color: labelColor }}>{t ? 'Message' : 'Mensaje'}</label>
             <textarea value={message} onChange={e => setMessage(e.target.value)} required rows={4} className="w-full border-2 rounded-xl px-4 py-3 text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-all resize-none" style={inputStyle} placeholder={t ? 'Describe your issue...' : 'Describe tu problema...'} />
           </div>
-          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={loading || !subject} className="relative w-full overflow-hidden rounded-xl py-3.5 bg-gradient-to-r from-yellow-500 via-amber-600 to-red-900 text-white font-medium disabled:opacity-50 flex items-center justify-center gap-2">
+          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={loading || !subject} className="relative w-full overflow-hidden rounded-xl py-3.5 bg-gradient-to-r from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] text-white font-medium disabled:opacity-50 flex items-center justify-center gap-2">
             <motion.div animate={{ x: ['-100%', '100%'] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             <span className="relative z-10 flex items-center gap-2">
               {loading ? <motion.div animate={{ rotate: 360 }} transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }} className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" /> : <Mail className="w-4 h-4" />}
@@ -983,7 +983,7 @@ function NoteVaultApp({
   const bg = dark ? '#030712' : '#fffbeb';
   const textPrimary = dark ? '#f9fafb' : '#111827';
   const textSecondary = dark ? '#9ca3af' : '#6b7280';
-  const borderColor = dark ? 'rgba(120,53,15,0.35)' : 'rgba(251,191,36,0.4)';
+  const borderColor = dark ? 'rgba(120,53,15,0.35)' : 'rgba(201,168,76,0.4)';
   const cardBg = dark ? 'rgba(15,10,5,0.8)' : 'rgba(255,255,255,0.85)';
   const sidebarBg = dark ? 'rgba(5,3,1,0.9)' : 'rgba(255,255,255,0.8)';
 
@@ -1047,7 +1047,7 @@ function NoteVaultApp({
         <div className="flex items-center justify-between px-4 pt-5 pb-3">
           {!sidebarCollapsed && (
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 via-amber-600 to-red-900 rounded-xl flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] rounded-xl flex items-center justify-center">
                 <BookOpen className="w-4 h-4 text-white" />
               </div>
               <span className="font-bold text-base" style={{ color: textPrimary }}>NoteVault</span>
@@ -1093,7 +1093,7 @@ function NoteVaultApp({
                 style={{
                   background: active ? 'linear-gradient(135deg,rgba(234,179,8,0.25),rgba(153,0,0,0.15))' : 'transparent',
                   border: active ? '1px solid rgba(234,179,8,0.3)' : '1px solid transparent',
-                  color: active ? '#fbbf24' : textSecondary,
+                  color: active ? '#c9a84c' : textSecondary,
                 }}
               >
                 <span className={active ? 'text-yellow-400' : ''}>{item.icon}</span>
@@ -1237,7 +1237,7 @@ function DashboardView({ notes, setNotes, lampOn, language, filteredNotes, categ
 
   const stats = [
     { label: language === 'EN' ? 'Total Notes' : 'Total Notas', value: total, icon: <FileText className="w-5 h-5" />, color: '#3b82f6' },
-    { label: language === 'EN' ? 'High Priority' : 'Alta Prioridad', value: highPriority, icon: <Star className="w-5 h-5" />, color: '#f59e0b' },
+    { label: language === 'EN' ? 'High Priority' : 'Alta Prioridad', value: highPriority, icon: <Star className="w-5 h-5" />, color: '#c9a84c' },
     { label: language === 'EN' ? 'Archived' : 'Archivadas', value: archived, icon: <FolderOpen className="w-5 h-5" />, color: '#8b5cf6' },
     { label: language === 'EN' ? 'In Recycle Bin' : 'En Papelera', value: deleted, icon: <Trash2 className="w-5 h-5" />, color: '#ef4444' },
   ];
@@ -1270,7 +1270,7 @@ function DashboardView({ notes, setNotes, lampOn, language, filteredNotes, categ
             style={{
               background: categoryFilter === cat ? 'linear-gradient(135deg,rgba(234,179,8,0.3),rgba(153,0,0,0.2))' : 'transparent',
               borderColor: categoryFilter === cat ? 'rgba(234,179,8,0.5)' : borderColor,
-              color: categoryFilter === cat ? '#fbbf24' : textSecondary,
+              color: categoryFilter === cat ? '#c9a84c' : textSecondary,
             }}
           >
             {cat === 'all' ? (language === 'EN' ? 'All' : 'Todos') : `#${cat}`}
@@ -1466,7 +1466,7 @@ function NewNoteView({ lampOn, language, editingNote, onSave, textPrimary, textS
           onInput={() => {}}
           dangerouslySetInnerHTML={{ __html: content }}
           className="p-4 focus:outline-none"
-          style={{ minHeight: '280px', color: textPrimary, caretColor: '#fbbf24' }}
+          style={{ minHeight: '280px', color: textPrimary, caretColor: '#c9a84c' }}
         />
       </div>
 
@@ -1523,7 +1523,7 @@ function NewNoteView({ lampOn, language, editingNote, onSave, textPrimary, textS
       {/* High priority */}
       <div className="flex items-center gap-3">
         <button onClick={() => setHighPriority(p => !p)} className="flex items-center gap-2 px-4 py-2 rounded-xl border transition-all"
-          style={{ borderColor: highPriority ? '#f59e0b' : borderColor, background: highPriority ? 'rgba(245,158,11,0.1)' : 'transparent', color: highPriority ? '#f59e0b' : textSecondary }}>
+          style={{ borderColor: highPriority ? '#c9a84c' : borderColor, background: highPriority ? 'rgba(201,168,76,0.1)' : 'transparent', color: highPriority ? '#c9a84c' : textSecondary }}>
           <Star className={`w-5 h-5 ${highPriority ? 'fill-yellow-400' : ''}`} />
           {language === 'EN' ? 'High Priority' : 'Alta Prioridad'}
         </button>
@@ -1532,7 +1532,7 @@ function NewNoteView({ lampOn, language, editingNote, onSave, textPrimary, textS
       {/* Save button */}
       <motion.button whileHover={{ scale: 1.01, boxShadow: '0 20px 40px rgba(234,179,8,0.3)' }} whileTap={{ scale: 0.99 }}
         onClick={handleSave}
-        className="relative w-full overflow-hidden rounded-xl py-4 bg-gradient-to-r from-yellow-500 via-amber-600 to-red-900 text-white font-semibold shadow-lg shadow-yellow-500/30 flex items-center justify-center gap-2">
+        className="relative w-full overflow-hidden rounded-xl py-4 bg-gradient-to-r from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] text-white font-semibold shadow-lg shadow-[#c9a84c]/30 flex items-center justify-center gap-2">
         <motion.div animate={{ x: ['-100%', '100%'] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         <span className="relative z-10">{language === 'EN' ? 'Save Note' : 'Guardar Nota'}</span>
       </motion.button>
@@ -1633,7 +1633,7 @@ function SaveView({ notes, lampOn, language, textPrimary, textSecondary, borderC
             {selected.size === visibleNotes.length ? (language === 'EN' ? 'Deselect All' : 'Deseleccionar') : (language === 'EN' ? 'Select All' : 'Seleccionar Todo')}
           </button>
           <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={handleDownload} disabled={selected.size === 0}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-medium disabled:opacity-40 bg-gradient-to-r from-yellow-500 to-amber-600">
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-sm font-medium disabled:opacity-40 bg-gradient-to-r from-[#c9a84c] to-[#f0d78c]">
             <Download className="w-4 h-4" />
             {language === 'EN' ? `Download (${selected.size})` : `Descargar (${selected.size})`}
           </motion.button>
@@ -1648,9 +1648,9 @@ function SaveView({ notes, lampOn, language, textPrimary, textSecondary, borderC
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleNotes.map(note => (
-            <div key={note.id} onClick={() => toggleNote(note.id)} className="rounded-2xl p-4 border cursor-pointer transition-all" style={{ background: cardBg, borderColor: selected.has(note.id) ? '#fbbf24' : borderColor, outline: selected.has(note.id) ? '2px solid rgba(251,191,36,0.4)' : 'none' }}>
+            <div key={note.id} onClick={() => toggleNote(note.id)} className="rounded-2xl p-4 border cursor-pointer transition-all" style={{ background: cardBg, borderColor: selected.has(note.id) ? '#c9a84c' : borderColor, outline: selected.has(note.id) ? '2px solid rgba(201,168,76,0.4)' : 'none' }}>
               <div className="flex items-start gap-3">
-                <div className={`w-5 h-5 rounded border-2 shrink-0 mt-0.5 flex items-center justify-center transition-all ${selected.has(note.id) ? 'bg-yellow-500 border-yellow-500' : ''}`} style={{ borderColor: selected.has(note.id) ? '#fbbf24' : borderColor }}>
+                <div className={`w-5 h-5 rounded border-2 shrink-0 mt-0.5 flex items-center justify-center transition-all ${selected.has(note.id) ? 'bg-[#c9a84c] border-[#c9a84c]' : ''}`} style={{ borderColor: selected.has(note.id) ? '#c9a84c' : borderColor }}>
                   {selected.has(note.id) && <CheckCircle className="w-3.5 h-3.5 text-white" />}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -1813,13 +1813,13 @@ function LoginPage({
       {/* HEADER */}
       <motion.header initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}
         className="relative z-20 backdrop-blur-xl border-b transition-colors duration-700"
-        style={{ background: darkMode ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.7)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(251,191,36,0.35)' }}>
+        style={{ background: darkMode ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.7)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(201,168,76,0.35)' }}>
         <div className="container mx-auto px-8 py-4 flex items-center justify-between">
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3">
             <div className="relative">
               <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-2xl blur-lg opacity-50" />
-              <div className="relative w-12 h-12 bg-gradient-to-br from-yellow-500 via-amber-600 to-red-900 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-500/30">
+                className="absolute inset-0 bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] rounded-2xl blur-lg opacity-50" />
+              <div className="relative w-12 h-12 bg-gradient-to-br from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] rounded-2xl flex items-center justify-center shadow-lg shadow-[#c9a84c]/30">
                 <BookOpen className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -1900,17 +1900,17 @@ function LoginPage({
             <motion.div whileHover={{ rotateY: 1.5, rotateX: 1 }} transition={{ duration: 0.3 }} className="relative" style={{ transformStyle: 'preserve-3d' }}>
               <div className="absolute inset-0 rounded-3xl blur-2xl transition-opacity duration-700" style={{ background: 'linear-gradient(135deg,rgba(255,215,0,0.28),rgba(153,0,0,0.18),rgba(255,150,20,0.28))', opacity: lampOn ? 1 : 0.28 }} />
               <div className="relative backdrop-blur-2xl rounded-3xl p-10 shadow-2xl border-2 transition-colors duration-700"
-                style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.96),rgba(255,251,235,0.88))' : 'linear-gradient(135deg,rgba(0,0,0,0.82),rgba(60,0,0,0.3))', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)' }}>
+                style={{ background: lampOn ? 'linear-gradient(135deg,rgba(255,255,255,0.96),rgba(255,251,235,0.88))' : 'linear-gradient(135deg,rgba(0,0,0,0.82),rgba(60,0,0,0.3))', borderColor: lampOn ? 'rgba(201,168,76,0.45)' : 'rgba(120,53,15,0.32)' }}>
                 <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-yellow-500/30 rounded-tl-3xl" />
                 <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-yellow-500/30 rounded-br-3xl" />
 
                 <div className="text-center mb-8">
                   <motion.div initial={{ scale: 0, rotate: -180 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-yellow-500 via-amber-600 to-red-900 mb-6 shadow-2xl shadow-yellow-500/50 relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-2xl blur-md opacity-50 animate-pulse" />
+                    className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] mb-6 shadow-2xl shadow-[#c9a84c]/50 relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#c9a84c] to-[#f0d78c] rounded-2xl blur-md opacity-50 animate-pulse" />
                     <BookOpen className="relative w-10 h-10 text-white" />
                   </motion.div>
-                  <h2 className="text-4xl mb-2 bg-gradient-to-r from-yellow-500 via-amber-600 to-yellow-500 bg-clip-text text-transparent">
+                  <h2 className="text-4xl mb-2 bg-gradient-to-r from-[#f0d78c] via-[#c9a84c] to-[#f0d78c] bg-clip-text text-transparent">
                     {language === 'EN' ? 'Welcome Back' : 'Bienvenido'}
                   </h2>
                   <p className="transition-colors duration-700" style={{ color: lampOn ? '#6b7280' : '#9ca3af' }}>
@@ -1924,12 +1924,12 @@ function LoginPage({
                       {language === 'EN' ? 'Email Address' : 'Correo Electrónico'}
                     </label>
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-xl opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity blur-sm" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] rounded-xl opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity blur-sm" />
                       <div className="relative flex items-center">
                         <Mail className="absolute left-4 w-5 h-5 text-yellow-600" />
                         <input type="email" value={email} onChange={e => setEmail(e.target.value)}
                           className="w-full border-2 rounded-xl px-12 py-3.5 placeholder-gray-500 focus:outline-none focus:border-yellow-500 transition-all backdrop-blur-sm"
-                          style={{ background: lampOn ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.42)', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
+                          style={{ background: lampOn ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.42)', borderColor: lampOn ? 'rgba(201,168,76,0.45)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
                           placeholder={language === 'EN' ? 'your@email.com' : 'tu@email.com'} required />
                       </div>
                     </div>
@@ -1949,12 +1949,12 @@ function LoginPage({
                       {language === 'EN' ? 'Password' : 'Contraseña'}
                     </label>
                     <div className="relative group">
-                      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-xl opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity blur-sm" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#c9a84c] to-[#f0d78c] rounded-xl opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity blur-sm" />
                       <div className="relative flex items-center">
                         <Lock className="absolute left-4 w-5 h-5 text-yellow-600" />
                         <input type={showPassword ? 'text' : 'password'} value={password} onChange={e => setPassword(e.target.value)}
                           className="w-full border-2 rounded-xl px-12 py-3.5 placeholder-gray-500 focus:outline-none focus:border-yellow-500 transition-all backdrop-blur-sm"
-                          style={{ background: lampOn ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.42)', borderColor: lampOn ? 'rgba(251,191,36,0.45)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
+                          style={{ background: lampOn ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.42)', borderColor: lampOn ? 'rgba(201,168,76,0.45)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}
                           placeholder="••••••••" required />
                         <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 transition-colors" style={{ color: lampOn ? '#6b7280' : '#9ca3af' }}>
                           {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -1976,7 +1976,7 @@ function LoginPage({
                   <motion.button initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
                     whileHover={{ scale: 1.02, boxShadow: '0 25px 50px rgba(234,179,8,0.4)' }} whileTap={{ scale: 0.98 }}
                     type="submit" disabled={isLoading}
-                    className="relative w-full overflow-hidden rounded-xl py-4 bg-gradient-to-r from-yellow-500 via-amber-600 to-red-900 text-white disabled:opacity-50 shadow-lg shadow-yellow-500/30">
+                    className="relative w-full overflow-hidden rounded-xl py-4 bg-gradient-to-r from-[#f0d78c] via-[#c9a84c] to-[#8a6a1f] text-white disabled:opacity-50 shadow-lg shadow-[#c9a84c]/30">
                     <motion.div animate={{ x: ['-100%', '100%'] }} transition={{ duration: 2, repeat: Infinity, ease: 'linear' }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       {isLoading ? (<><motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full" />{language === 'EN' ? 'Processing...' : 'Procesando...'}</>) : (language === 'EN' ? 'Sign In' : 'Iniciar Sesión')}
@@ -1985,18 +1985,18 @@ function LoginPage({
                 </form>
 
                 <div className="relative flex items-center gap-4 mt-6">
-                  <div className="flex-1 h-px transition-colors duration-700" style={{ background: lampOn ? 'rgba(251,191,36,0.35)' : 'rgba(120,53,15,0.32)' }} />
+                  <div className="flex-1 h-px transition-colors duration-700" style={{ background: lampOn ? 'rgba(201,168,76,0.35)' : 'rgba(120,53,15,0.32)' }} />
                   <span className="text-sm whitespace-nowrap transition-colors duration-700" style={{ color: lampOn ? '#9ca3af' : '#6b7280' }}>
                     {language === 'EN' ? 'or continue with' : 'o continúa con'}
                   </span>
-                  <div className="flex-1 h-px transition-colors duration-700" style={{ background: lampOn ? 'rgba(251,191,36,0.35)' : 'rgba(120,53,15,0.32)' }} />
+                  <div className="flex-1 h-px transition-colors duration-700" style={{ background: lampOn ? 'rgba(201,168,76,0.35)' : 'rgba(120,53,15,0.32)' }} />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   <motion.button whileHover={{ scale: 1.03, boxShadow: '0 8px 30px rgba(234,179,8,0.22)' }} whileTap={{ scale: 0.97 }}
                     type="button" onClick={() => setShowGoogle(true)}
                     className="relative flex items-center justify-center gap-2.5 py-3 rounded-xl border-2 transition-all backdrop-blur-sm overflow-hidden"
-                    style={{ background: lampOn ? 'rgba(255,255,255,0.82)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}>
+                    style={{ background: lampOn ? 'rgba(255,255,255,0.82)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}>
                     <motion.div animate={{ x: ['-100%', '200%'] }} transition={{ duration: 3, repeat: Infinity, ease: 'linear', repeatDelay: 1 }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/12 to-transparent" />
                     <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" aria-hidden="true">
                       <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -2009,7 +2009,7 @@ function LoginPage({
                   <motion.button whileHover={{ scale: 1.03, boxShadow: '0 8px 30px rgba(234,179,8,0.22)' }} whileTap={{ scale: 0.97 }}
                     type="button" onClick={() => setShowGitHub(true)}
                     className="relative flex items-center justify-center gap-2.5 py-3 rounded-xl border-2 transition-all backdrop-blur-sm overflow-hidden"
-                    style={{ background: lampOn ? 'rgba(255,255,255,0.82)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(251,191,36,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}>
+                    style={{ background: lampOn ? 'rgba(255,255,255,0.82)' : 'rgba(0,0,0,0.4)', borderColor: lampOn ? 'rgba(201,168,76,0.4)' : 'rgba(120,53,15,0.32)', color: lampOn ? '#111' : '#fff' }}>
                     <motion.div animate={{ x: ['-100%', '200%'] }} transition={{ duration: 3, repeat: Infinity, ease: 'linear', repeatDelay: 1.5 }} className="absolute inset-0 bg-gradient-to-r from-transparent via-white/12 to-transparent" />
                     <Github className="w-5 h-5 shrink-0" />
                     <span>GitHub</span>
@@ -2024,7 +2024,7 @@ function LoginPage({
                 </p>
               </div>
 
-              <motion.div animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }} transition={{ duration: 4, repeat: Infinity }} className="absolute -top-6 -right-6 w-24 h-24 rounded-3xl backdrop-blur-sm border border-yellow-500/20 shadow-lg shadow-yellow-500/20" style={{ background: 'linear-gradient(135deg,rgba(234,179,8,0.18),rgba(180,80,0,0.08))' }} />
+              <motion.div animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }} transition={{ duration: 4, repeat: Infinity }} className="absolute -top-6 -right-6 w-24 h-24 rounded-3xl backdrop-blur-sm border border-yellow-500/20 shadow-lg shadow-[#c9a84c]/20" style={{ background: 'linear-gradient(135deg,rgba(234,179,8,0.18),rgba(180,80,0,0.08))' }} />
               <motion.div animate={{ y: [0, 15, 0], rotate: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity }} className="absolute -bottom-6 -left-6 w-20 h-20 rounded-3xl backdrop-blur-sm border border-red-900/20 shadow-lg shadow-red-900/20" style={{ background: 'linear-gradient(135deg,rgba(127,0,0,0.18),rgba(100,0,0,0.08))' }} />
             </motion.div>
           </motion.div>
@@ -2034,7 +2034,7 @@ function LoginPage({
       {/* FOOTER */}
       <motion.footer initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}
         className="relative z-20 backdrop-blur-xl border-t transition-colors duration-700"
-        style={{ background: darkMode ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.65)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(251,191,36,0.35)' }}>
+        style={{ background: darkMode ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.65)', borderColor: darkMode ? 'rgba(120,53,15,0.22)' : 'rgba(201,168,76,0.35)' }}>
         <div className="container mx-auto px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="transition-colors duration-700" style={{ color: darkMode ? '#6b7280' : '#9ca3af' }}>
