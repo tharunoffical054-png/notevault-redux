@@ -2062,7 +2062,7 @@ function LoginPage({
 }
 
 // ─── Root App ─────────────────────────────────────────────────────────────────
-export default function NoteVaultApp() {
+export default function NoteVaultRoot() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
   const [lampOn, setLampOn] = useState(false);
