@@ -21,7 +21,7 @@ interface Note {
   category: 'planned' | 'watching' | 'purchased' | 'cancelled';
   files: { name: string; size: number; type: string; dataUrl: string }[];
   deleted: boolean;
-  deletedAt?: string;
+  deletedAt?: string | undefined;
   highPriority: boolean;
   archived: boolean;
 }
