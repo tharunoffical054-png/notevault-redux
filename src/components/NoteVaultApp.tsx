@@ -1154,7 +1154,7 @@ function NoteVaultApp({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     className="absolute top-full left-0 right-0 mt-1 rounded-xl border shadow-xl overflow-hidden z-50"
-                    style={{ background: dark ? '#0f0a05' : '#fff', borderColor }}
+                    style={{ background: dark ? '#0f0a05' : '#fffdf3', borderColor }}
                   >
                     {recentSearches.map((s, i) => (
                       <div key={i} className="flex items-center justify-between px-4 py-2.5 hover:bg-yellow-500/10 cursor-pointer transition-colors" onClick={() => handleSearch(s)}>
@@ -1419,7 +1419,7 @@ function NewNoteView({ lampOn, language, editingNote, onSave, textPrimary, textS
           <button style={toolbarBtnStyle()} onClick={() => execCmd('strikeThrough')} title="Strike"><Strikethrough className="w-4 h-4" /></button>
           <div className="w-px h-5 mx-1" style={{ background: borderColor }} />
           <select onChange={e => execCmd('fontSize', e.target.value)} className="text-xs rounded px-1 py-0.5 border focus:outline-none"
-            style={{ background: dark ? '#0f0a05' : '#fff', borderColor, color: textPrimary }}>
+            style={{ background: dark ? '#0f0a05' : '#fffdf3', borderColor, color: textPrimary }}>
             <option value="2">Small</option>
             <option value="3" selected>Normal</option>
             <option value="5">Large</option>
@@ -1436,7 +1436,7 @@ function NewNoteView({ lampOn, language, editingNote, onSave, textPrimary, textS
           <div className="relative">
             <button style={toolbarBtnStyle()} onClick={() => setShowTablePicker(p => !p)}><Table className="w-4 h-4" /></button>
             {showTablePicker && (
-              <div className="absolute top-full left-0 mt-1 p-2 rounded-xl border shadow-xl z-50" style={{ background: dark ? '#0f0a05' : '#fff', borderColor }}>
+              <div className="absolute top-full left-0 mt-1 p-2 rounded-xl border shadow-xl z-50" style={{ background: dark ? '#0f0a05' : '#fffdf3', borderColor }}>
                 <p className="text-xs mb-2" style={{ color: textSecondary }}>
                   {tableHover[0] > 0 ? `${tableHover[0]} × ${tableHover[1]}` : (language === 'EN' ? 'Select size' : 'Seleccionar tamaño')}
                 </p>
