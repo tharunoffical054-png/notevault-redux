@@ -980,12 +980,13 @@ function NoteVaultApp({
   const photoInputRef = useRef<HTMLInputElement>(null);
 
   const dark = !lampOn;
-  const bg = dark ? '#0d0d0d' : '#f7f5f1';
-  const textPrimary = dark ? '#f4f1ea' : '#16150f';
-  const textSecondary = dark ? '#8f8a7e' : '#6b6659';
-  const borderColor = dark ? 'rgba(201,168,76,0.16)' : 'rgba(22,21,15,0.10)';
-  const cardBg = dark ? '#1a1a1a' : '#ffffff';
-  const sidebarBg = dark ? '#111111' : '#ffffff';
+  const bg = dark ? '#0d0d0d' : '#fdf9e7';
+  const textPrimary = dark ? '#f4f1ea' : '#2a2410';
+  const textSecondary = dark ? '#8f8a7e' : '#7a6f4a';
+  const borderColor = dark ? 'rgba(201,168,76,0.16)' : 'rgba(191,150,40,0.22)';
+  const cardBg = dark ? '#1a1a1a' : '#fffdf3';
+  const sidebarBg = dark ? '#111111' : '#fffdf3';
+
 
 
   const activeNotes = notes.filter(n => !n.deleted && !n.archived);
@@ -1153,7 +1154,7 @@ function NoteVaultApp({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     className="absolute top-full left-0 right-0 mt-1 rounded-xl border shadow-xl overflow-hidden z-50"
-                    style={{ background: dark ? '#0f0a05' : '#fff', borderColor }}
+                    style={{ background: dark ? '#0f0a05' : '#fffdf3', borderColor }}
                   >
                     {recentSearches.map((s, i) => (
                       <div key={i} className="flex items-center justify-between px-4 py-2.5 hover:bg-yellow-500/10 cursor-pointer transition-colors" onClick={() => handleSearch(s)}>
@@ -1418,7 +1419,7 @@ function NewNoteView({ lampOn, language, editingNote, onSave, textPrimary, textS
           <button style={toolbarBtnStyle()} onClick={() => execCmd('strikeThrough')} title="Strike"><Strikethrough className="w-4 h-4" /></button>
           <div className="w-px h-5 mx-1" style={{ background: borderColor }} />
           <select onChange={e => execCmd('fontSize', e.target.value)} className="text-xs rounded px-1 py-0.5 border focus:outline-none"
-            style={{ background: dark ? '#0f0a05' : '#fff', borderColor, color: textPrimary }}>
+            style={{ background: dark ? '#0f0a05' : '#fffdf3', borderColor, color: textPrimary }}>
             <option value="2">Small</option>
             <option value="3" selected>Normal</option>
             <option value="5">Large</option>
@@ -1435,7 +1436,7 @@ function NewNoteView({ lampOn, language, editingNote, onSave, textPrimary, textS
           <div className="relative">
             <button style={toolbarBtnStyle()} onClick={() => setShowTablePicker(p => !p)}><Table className="w-4 h-4" /></button>
             {showTablePicker && (
-              <div className="absolute top-full left-0 mt-1 p-2 rounded-xl border shadow-xl z-50" style={{ background: dark ? '#0f0a05' : '#fff', borderColor }}>
+              <div className="absolute top-full left-0 mt-1 p-2 rounded-xl border shadow-xl z-50" style={{ background: dark ? '#0f0a05' : '#fffdf3', borderColor }}>
                 <p className="text-xs mb-2" style={{ color: textSecondary }}>
                   {tableHover[0] > 0 ? `${tableHover[0]} × ${tableHover[1]}` : (language === 'EN' ? 'Select size' : 'Seleccionar tamaño')}
                 </p>
@@ -1788,7 +1789,7 @@ function LoginPage({
   };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden transition-colors duration-700" style={{ background: darkMode ? '#030712' : '#fffbeb' }}>
+    <div className="min-h-screen flex flex-col overflow-hidden transition-colors duration-700" style={{ background: darkMode ? '#030712' : 'radial-gradient(120% 90% at 30% 40%, #fdedb0 0%, #fdf3c8 45%, #fefaea 100%)' }}>
       {/* Global light radiance */}
       <motion.div className="fixed inset-0 pointer-events-none z-[1]" animate={{ opacity: lampOn ? 1 : 0 }} transition={{ duration: 0.9 }}
         style={{ background: 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,210,70,0.45) 0%, rgba(255,170,30,0.22) 38%, transparent 68%)' }} />
