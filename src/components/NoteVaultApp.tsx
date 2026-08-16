@@ -980,12 +980,13 @@ function NoteVaultApp({
   const photoInputRef = useRef<HTMLInputElement>(null);
 
   const dark = !lampOn;
-  const bg = dark ? '#0d0d0d' : '#f7f5f1';
-  const textPrimary = dark ? '#f4f1ea' : '#16150f';
-  const textSecondary = dark ? '#8f8a7e' : '#6b6659';
-  const borderColor = dark ? 'rgba(201,168,76,0.16)' : 'rgba(22,21,15,0.10)';
-  const cardBg = dark ? '#1a1a1a' : '#ffffff';
-  const sidebarBg = dark ? '#111111' : '#ffffff';
+  const bg = dark ? '#0d0d0d' : '#fdf9e7';
+  const textPrimary = dark ? '#f4f1ea' : '#2a2410';
+  const textSecondary = dark ? '#8f8a7e' : '#7a6f4a';
+  const borderColor = dark ? 'rgba(201,168,76,0.16)' : 'rgba(191,150,40,0.22)';
+  const cardBg = dark ? '#1a1a1a' : '#fffdf3';
+  const sidebarBg = dark ? '#111111' : '#fffdf3';
+
 
 
   const activeNotes = notes.filter(n => !n.deleted && !n.archived);
