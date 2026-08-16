@@ -1789,7 +1789,7 @@ function LoginPage({
   };
 
   return (
-    <div className="min-h-screen flex flex-col overflow-hidden transition-colors duration-700" style={{ background: darkMode ? '#030712' : '#fffbeb' }}>
+    <div className="min-h-screen flex flex-col overflow-hidden transition-colors duration-700" style={{ background: darkMode ? '#030712' : 'radial-gradient(120% 90% at 30% 40%, #fdedb0 0%, #fdf3c8 45%, #fefaea 100%)' }}>
       {/* Global light radiance */}
       <motion.div className="fixed inset-0 pointer-events-none z-[1]" animate={{ opacity: lampOn ? 1 : 0 }} transition={{ duration: 0.9 }}
         style={{ background: 'radial-gradient(ellipse 75% 100% at 26% 32%, rgba(255,210,70,0.45) 0%, rgba(255,170,30,0.22) 38%, transparent 68%)' }} />
